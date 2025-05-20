@@ -19,4 +19,4 @@ output_path = "output_1080p.mp4"
 os.system(
     f'ffmpeg -y -i "{video_path}" -i "{audio_path}" -c:v copy -c:a aac "{output_path}"')
 
-print(f"Downloaded and merged 1080p video to {output_path}")
+print(f"Downloaded and merged video to {output_path}")

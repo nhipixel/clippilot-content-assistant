@@ -35,10 +35,10 @@ image = (modal.Image.from_registry(
                    "fc-cache -f -v"])
     .add_local_dir("asd", "/asd", copy=True))
 
-app = modal.App("ai-podcast-clipper", image=image)
+app = modal.App("voiceforgood", image=image)
 
 volume = modal.Volume.from_name(
-    "ai-podcast-clipper-model-cache", create_if_missing=True
+    "voiceforgood-model-cache", create_if_missing=True
 )
 
 mount_path = "/root/.cache/torch"
@@ -301,11 +301,11 @@ def process_clip(base_dir: str, original_video_path: str, s3_key: str, start_tim
 
     s3_client = boto3.client("s3")
     s3_client.upload_file(
-        subtitle_output_path, "ai-podcast-clipper", output_s3_key)
+        subtitle_output_path, "voiceforgood", output_s3_key)
 
 
-@app.cls(gpu="L40S", timeout=900, retries=0, scaledown_window=20, secrets=[modal.Secret.from_name("ai-podcast-clipper-secret")], volumes={mount_path: volume})
-class AiPodcastClipper:
+@app.cls(gpu="L40S", timeout=900, retries=0, scaledown_window=20, secrets=[modal.Secret.from_name("voiceforgood-secret")], volumes={mount_path: volume})
+class AiTestimonyHighlighter:
     @modal.enter()
     def load_model(self):
         print("Loading models")
@@ -330,7 +330,7 @@ class AiPodcastClipper:
         subprocess.run(extract_cmd, shell=True,
                        check=True, capture_output=True)
 
-        print("Starting transcription with WhisperX...")
+        print("Starting transcription...")
         start_time = time.time()
 
         audio = whisperx.load_audio(str(audio_path))
@@ -382,7 +382,7 @@ class AiPodcastClipper:
         # Download video file
         video_path = base_dir / "input.mp4"
         s3_client = boto3.client("s3")
-        s3_client.download_file("ai-podcast-clipper", s3_key, str(video_path))
+        s3_client.download_file("voiceforgood", s3_key, str(video_path))
 
         # 1. Transcription
         transcript_segments_json = self.transcribe_video(base_dir, video_path)
@@ -422,9 +422,9 @@ class AiPodcastClipper:
 def main():
     import requests
 
-    ai_podcast_clipper = AiPodcastClipper()
+    ai_testimony_highlighter = AiTestimonyHighlighter()
 
-    url = ai_podcast_clipper.process_video.web_url
+    url = ai_testimony_highlighter.process_video.web_url
 
     payload = {
         "s3_key": "test2/mi630min.mp4"

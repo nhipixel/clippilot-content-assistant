@@ -1,0 +1,14 @@
+[33m049919a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m7cd6de9[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{1}: commit (amend): Updated JSON & JavaScript files; fixed bugs for responsiveness.
+[33m37deaeb[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{2}: reset: moving to master
+[33mffd86fa[m HEAD@{3}: checkout: moving from master to main
+[33m37deaeb[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{4}: checkout: moving from main to master
+[33mffd86fa[m HEAD@{5}: checkout: moving from master to main
+[33m37deaeb[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{6}: commit (amend): Updated JSON & JavaScript files; fixed bugs for responsiveness.
+[33m37deaeb[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{7}: commit (amend): Updated JSON & JavaScript files; fixed bugs for responsiveness.
+[33m4e6d03d[m HEAD@{8}: commit (amend): Complete UI.
+[33mfac642b[m HEAD@{9}: commit (amend): Initial version of backend
+[33md2fcda2[m HEAD@{10}: commit: Initial version of backend files
+[33m049919a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m HEAD@{11}: commit: Current backend files to help with downloading videos and cutting them into segments.
+[33m036972b[m HEAD@{12}: commit: Added feature: ytdownload
+[33m6a3e6fc[m HEAD@{13}: commit (initial): Initial commit of backend and structure
